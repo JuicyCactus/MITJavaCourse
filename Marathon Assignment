@@ -1,0 +1,53 @@
+//Major practice with writing methods and then calling them to do work
+public class Marathon {
+	public static int fastestTime(int[] t) {
+		/*Method for finding fastest time and corresponding name, and
+		the "t" parameter is a variable name not the name of the array
+		 t is for time*/
+		int minTimeIndex = 0;
+		
+		for(int i = 0; i < t.length; i++) {
+			if(t[i] < t[minTimeIndex]) {
+				minTimeIndex = i;
+			}
+		}
+		
+		return minTimeIndex;
+	}
+	
+	public static int secondFastest(int[] t) {
+		/*Method for finding the second fastest time, and
+		same here: the "times" in the parameter is NOT the name of the array
+		in the main method; it is a variable/placeholder.
+		t is for time*/
+		int fastestIndex = fastestTime(t);
+		int secondFastIndex = 0;
+		for(int i = 0; i < t.length; i++) {
+			if(t[i] > t[fastestIndex] && t[i] < t[secondFastIndex]){
+				secondFastIndex = i;
+			}
+		}
+		
+		return secondFastIndex;
+	}
+	
+	public static void main(String[] args) {
+		String[] names = {
+				"Elena", "Thomas", "Hamilton", "Suzie", "Phil", "Matt",
+				"Alex", "Emma", "John", "James", "Jane", "Emily", "Daniel",
+				"Neda", "Aaron", "Kate"
+		};
+		
+		int[] times = {
+				341, 273, 278, 329, 445, 402, 388, 275, 243, 334, 412, 393,
+				299, 343, 317, 265
+		};
+		
+		/*the array "times" is now passed in as an arg to the methods above,
+		and it replaces "t"*/
+		System.out.println("The fastest runner is: " + names[fastestTime(times)]);
+		System.out.println("The time is: " + times[fastestTime(times)]);
+		System.out.println("The second fastest runner is: " + names[secondFastest(times)]);
+		System.out.println("The time is: " + times[secondFastest(times)]);
+	}	
+}
